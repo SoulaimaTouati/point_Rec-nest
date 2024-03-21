@@ -2,7 +2,7 @@ import { Injectable,Logger,NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AdminPlateforme } from '../entities/adminPlateforme.entity';
-import { AdminPointrelais } from '../entities/adminpointrelais.entity'; // Assurez-vous du chemin correct
+import { AdminPointrelais } from '../entities/adminpointrelais.entity'; 
 import { AgentPointrelais } from 'src/entities/agentpointrelais.entity';
 
 @Injectable()

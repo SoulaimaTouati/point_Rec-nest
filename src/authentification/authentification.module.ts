@@ -13,11 +13,10 @@ import { AgentPointrelais } from 'src/entities/agentpointrelais.entity';
     port: 3307,
     username: 'root',
     password: '',
-    database: 'admin', // Nom de votre base de données
+    database: 'admin', 
     entities: [AdminPlateforme,AdminPointrelais,AgentPointrelais], // Liste des entités à utiliser
     synchronize: true, // Mettez à true pour synchroniser automatiquement le schéma avec la base de données
   })
-  //AuthentificationModule, // Ajoutez votre module d'authentification ici
 ], 
   controllers: [AuthentificationController],
   providers: [AuthentificationService]

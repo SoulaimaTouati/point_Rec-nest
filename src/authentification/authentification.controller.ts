@@ -19,7 +19,7 @@ import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
       const result = await this.authentificationService.login(username, password, role);
       return result; // Si l'authentification réussit, retournez les informations appropriées
     } catch (error) {
-      return { success: false, message: error.message }; // Gérer les erreurs d'authentification
+      return { success: false, message: error.message };
     }
   }
 
@@ -38,39 +38,4 @@ import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
     }
 
     
-
-    }
-
-
-
-
-
-
-  /*import { Controller, Post, Body, Get } from '@nestjs/common';
-  import { AuthentificationService } from './authentification.service';
-
-  //localhost:3000/authentification
-  @Controller('authentification')
-  export class AuthentificationController {
-    constructor(private readonly authentificationService: AuthentificationService) {}
-    @Get()
-    gethello():String {
-      return this.authentificationService.gethello();
   }
-    @Get()
-    findAll():any[]{
-      return this.authentificationService.findAll();
-    }
-
-
-    @Post('register')
-    register(@Body() userData: any) {
-      return this.authentificationService.register(userData);
-    }
-
-    @Post('login')
-    login(@Body() userData: any) {
-      return this.authentificationService.login(userData);
-    }
-  }
-  */
