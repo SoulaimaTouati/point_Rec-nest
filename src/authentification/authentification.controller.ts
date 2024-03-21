@@ -12,11 +12,22 @@ import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
       return this.authentificationService.gethello();
     }
 
-    
+    @Post('login')
+  async login(@Body() loginData: any) {
+    const { username, password, role } = loginData;
+    try {
+      const result = await this.authentificationService.login(username, password, role);
+      return result; // Si l'authentification réussit, retournez les informations appropriées
+    } catch (error) {
+      return { success: false, message: error.message }; // Gérer les erreurs d'authentification
+    }
+  }
+
     @Get('test-db-connection')
     async testDBConnection(): Promise<string> {
       return this.authentificationService.testDatabaseConnection();
     }
+    
     @Get('adminplateforme')
     async getAllAdminplateforme(): Promise<AdminPlateforme[]> {
       return this.authentificationService.getAllAdminPlateforme();

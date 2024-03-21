@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
-@Entity({ name: 'adminplateforme' }) // Assurez-vous que le nom correspond à votre table dans la base de données
+//adminplateforme correspond lil tableau fil base lazem ykoun le meme nom
+@Entity({ name: 'adminplateforme' }) 
 export class AdminPlateforme {
   @PrimaryGeneratedColumn({ name: 'idadminplateforme' })
   idadminplateforme: number;
@@ -12,7 +12,7 @@ export class AdminPlateforme {
   prenom: string;
 
   @Column({ name: 'numerotelephone' })
-  numerotelephone: string;
+  numerotelephone: number;
 
   @Column({ name: 'motdepasse' })
   motdepasse: string; // 

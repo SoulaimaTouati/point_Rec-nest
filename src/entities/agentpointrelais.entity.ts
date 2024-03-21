@@ -1,9 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-//(adminpointrelais)correspond au nom du tableau fil base données
-@Entity({ name: 'adminpointrelais' }) 
-export class AdminPointrelais {
-  @PrimaryGeneratedColumn({ name: 'idadminpointrelais' })
-  idadminpointrelais: number;
+
+//(agentpointrelais)correspond au nom du tableau fil base données
+@Entity({ name: 'agentpointrelais' }) 
+export class AgentPointrelais {
+  @PrimaryGeneratedColumn({ name: 'idagentpointrelais' })
+  idagentpointrelais: number;
 
   @Column({ name: 'nom', length: 100 })
   nom: string;
