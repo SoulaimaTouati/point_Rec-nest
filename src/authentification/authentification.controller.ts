@@ -17,7 +17,8 @@ import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
     const { username, password, role } = loginData;
     try {
       const result = await this.authentificationService.login(username, password, role);
-      return result; // Si l'authentification réussit, retournez les informations appropriées
+      // Si l'authentification réussit, retournez les informations appropriées
+      return result; 
     } catch (error) {
       return { success: false, message: error.message };
     }

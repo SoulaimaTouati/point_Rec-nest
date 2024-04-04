@@ -15,5 +15,5 @@ export class AdminPlateforme {
   numerotelephone: number;
 
   @Column({ name: 'motdepasse' })
-  motdepasse: string; // 
+  motdepasse: string; 
 }

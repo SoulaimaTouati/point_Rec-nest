@@ -20,21 +20,21 @@ export class AuthentificationService {
   ) {}
 
   async login(username: string, password: string, role: string) {
-    this.logger.log(`Received login request for username: ${username}, role: ${role}`);
+    this.logger.log(`Demande de connexion reçue pour le nom d'utilisateur: ${username}, role: ${role}`);
 
     let user = null;
     switch (role) {
       case 'admin_platform':
-        user = await this.adminPlateformeRepository.findOne({ where: { nom: username, motdepasse: password } });
+        user = await this.adminPlateformeRepository.findOne({ where: {nom: username, motdepasse: password }});
         break;
       case 'admin_agent':
-        user = await this.adminPointrelaisRepository.findOne({ where: { nom: username, motdepasse: password } });
+        user = await this.adminPointrelaisRepository.findOne({ where: {nom: username, motdepasse: password }});
         break;
       case 'agent_point_relais':
-        user = await this.agentpointrelaisRepository.findOne({ where: { nom: username, motdepasse: password } });
+        user = await this.agentpointrelaisRepository.findOne({ where: {nom: username, motdepasse: password }});
         break;
       default:
-        this.logger.error(`Unsupported role received: ${role}`);
+        this.logger.error(`Rôle non pris en charge reçu: ${role}`);
         throw new NotFoundException('Rôle non pris en charge');
     }
 
@@ -42,7 +42,7 @@ export class AuthentificationService {
       throw new NotFoundException('vérifier vos données');
     }
 
-    this.logger.log(`User logged in successfully with role: ${role}`);
+    this.logger.log(`L'utilisateur s'est connecté avec succès avec le rôle : ${role}`);
     return { success: true, role };
   }
 
@@ -54,10 +54,10 @@ export class AuthentificationService {
       await this.adminPlateformeRepository.query('SELECT 1');
       await this.adminPointrelaisRepository.query('SELECT 1');
       await this.agentpointrelaisRepository.query('SELECT 1');
-      return 'Database connection successful';
+      return 'connection a la base données avec succées';
     } catch (error) {
-      console.error('Error connecting to database:', error);
-      throw new Error('Database connection failed');
+      console.error('erreur lors du connexion a la base données:', error);
+      throw new Error('La connexion à la base de données a échoué');
     }
   }
 
@@ -65,8 +65,8 @@ export class AuthentificationService {
     try {
       return await this.adminPlateformeRepository.find();
     } catch (error) {
-      console.error('Error fetching admin users:', error);
-      throw new Error('Failed to fetch admin users');
+      console.error('Erreur lors de la récupération des admins ', error);
+      throw new Error('Échec de la récupération des admins');
     }
   }
 
@@ -74,10 +74,12 @@ export class AuthentificationService {
     try {
       return await this.adminPointrelaisRepository.find();
     } catch (error) {
-      console.error('Error fetching admin users:', error);
-      throw new Error('Failed to fetch admin users');
+      console.error('Erreur lors de la récupération des admins', error);
+      throw new Error('Échec de la récupération des admins');
     }
   }
+
+  
 
   gethello(): string {
     return 'Hello world';

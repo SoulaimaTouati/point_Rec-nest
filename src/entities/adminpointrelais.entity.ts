@@ -14,6 +14,10 @@ export class AdminPointrelais {
   @Column({ name: 'numerotelephone' })
   numerotelephone: number;
 
-  @Column({ name: 'motdepasse' })
-  motdepasse: string; // 
+  @Column({ name: 'motdepasse',length:255 })
+  motdepasse: string; 
+
+  @Column({name: 'num_pointrelais'})
+  num_pointrelais:number;
+
 }

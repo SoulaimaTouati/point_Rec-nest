@@ -14,8 +14,10 @@ import { AgentPointrelais } from 'src/entities/agentpointrelais.entity';
     username: 'root',
     password: '',
     database: 'admin', 
-    entities: [AdminPlateforme,AdminPointrelais,AgentPointrelais], // Liste des entités à utiliser
-    synchronize: true, // Mettez à true pour synchroniser automatiquement le schéma avec la base de données
+    // Liste des entités à utiliser
+    entities: [AdminPlateforme,AdminPointrelais,AgentPointrelais], 
+    synchronize: true, 
+    // true pour synchroniser automatiquement le schéma avec la base de données
   })
 ], 
   controllers: [AuthentificationController],

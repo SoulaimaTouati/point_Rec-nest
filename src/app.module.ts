@@ -6,18 +6,23 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AdminPlateforme } from './entities/adminPlateforme.entity';
 import { AdminPointrelais } from './entities/adminpointrelais.entity';
 import { AgentPointrelais } from './entities/agentpointrelais.entity';
+import { Colis } from './entities/colis.entity';
+import { ColisModule } from './colis/colis/colis.module';
+import { AdminpointrelaisModule } from './espaceadminplateforme/adminpointrelais/adminpointrelais.module';
 @Module({
-  imports: [AuthentificationModule,TypeOrmModule.forRoot({
+  imports: [TypeOrmModule.forRoot({
     type: 'mariadb',
     host: 'localhost',
     port: 3307,
     username: 'root',
     password: '',
-    database: 'admin', // Nom de votre base de données
-    entities: [AdminPlateforme,AdminPointrelais,AgentPointrelais], // Liste des entités à utiliser
-    synchronize: true, // Mettez à true pour synchroniser automatiquement le schéma avec la base de données
-  })
-  //AuthentificationModule, // Ajoutez votre module d'authentification ici
+    database: 'admin', 
+    // Liste des entités à utiliser
+    entities: [AdminPlateforme,AdminPointrelais,AgentPointrelais,Colis], 
+    /// Mettez à true pour synchroniser automatiquement le schéma avec la base de données
+    synchronize: true, 
+  }), 
+  AuthentificationModule,ColisModule,AdminpointrelaisModule,
 ],
   controllers: [AppController],
   providers: [AppService],
