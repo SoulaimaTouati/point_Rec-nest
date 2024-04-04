@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Pointrelais } from './pointrelais.entity';
 //(adminpointrelais)correspond au nom du tableau fil base données
 @Entity({ name: 'adminpointrelais' }) 
 export class AdminPointrelais {
@@ -15,9 +16,15 @@ export class AdminPointrelais {
   numerotelephone: number;
 
   @Column({ name: 'motdepasse',length:255 })
+
   motdepasse: string; 
 
   @Column({name: 'num_pointrelais'})
   num_pointrelais:number;
+/*
+  @OneToMany(() => Pointrelais, (pointrelais) => pointrelais.adminPointrelais)
+  pointsRelais: Pointrelais;
+  */
 
 }
+
