@@ -11,6 +11,7 @@ import { ColisModule } from './colis/colis/colis.module';
 import { AdminpointrelaisModule } from './espaceadminplateforme/adminpointrelais/adminpointrelais.module';
 import { Pointrelais } from './entities/pointrelais.entity';
 import { PointrelaisModule } from './espaceadminplateforme/adminpointrelais/pointrelais/pointrelais/pointrelais.module';
+
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'mariadb',

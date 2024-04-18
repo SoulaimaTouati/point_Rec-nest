@@ -4,16 +4,18 @@ import { Pointrelais } from 'src/entities/pointrelais.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class PointrelaisService {
+export class pointRelaisService {
+  constructor(
+   
+    @InjectRepository(Pointrelais) // Ajoutez cette ligne pour injecter le repository Pointrelais
+    private pointRelaisRepository: Repository<Pointrelais>,
+  ) {}
 
-    constructor(
-        @InjectRepository(Pointrelais)
-        private pointRelaisRepository: Repository<Pointrelais>,
-      ) {}
-    
-      async getAllPointRelais(): Promise<Pointrelais[]> {
-        return this.pointRelaisRepository.find();
-      }
+  async getAllPointRelais(): Promise<Pointrelais[]> {
+    return this.pointRelaisRepository.find();
+  }
 
-
+  
 }
+
+

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PointrelaisService } from './pointrelais.service';
+import { pointRelaisService } from './pointrelais.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Pointrelais } from 'src/entities/pointrelais.entity';
 import { PointrelaisController } from './pointrelais.controller';
@@ -8,7 +8,7 @@ import { PointrelaisController } from './pointrelais.controller';
   TypeOrmModule.forFeature([Pointrelais]), 
 ],
 controllers: [PointrelaisController],
-providers: [PointrelaisService],
+providers: [pointRelaisService],
 })
 
 export class PointrelaisModule {}
