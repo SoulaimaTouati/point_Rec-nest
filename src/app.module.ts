@@ -11,6 +11,7 @@ import { ColisModule } from './colis/colis/colis.module';
 import { AdminpointrelaisModule } from './espaceadminplateforme/adminpointrelais/adminpointrelais.module';
 import { Pointrelais } from './entities/pointrelais.entity';
 import { PointrelaisModule } from './espaceadminplateforme/adminpointrelais/pointrelais/pointrelais/pointrelais.module';
+import { AdminplateformeModule } from './espaceadminplateforme/adminpointrelais/adminplateforme/adminplateforme/adminplateforme.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -25,7 +26,7 @@ import { PointrelaisModule } from './espaceadminplateforme/adminpointrelais/poin
     /// Mettez à true pour synchroniser automatiquement le schéma avec la base de données
     synchronize: true, 
   }), 
-  AuthentificationModule,ColisModule,AdminpointrelaisModule,PointrelaisModule
+  AuthentificationModule,ColisModule,AdminpointrelaisModule,PointrelaisModule,AdminplateformeModule,
 ],
   controllers: [AppController],
   providers: [AppService],

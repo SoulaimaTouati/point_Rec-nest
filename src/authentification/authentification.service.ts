@@ -19,6 +19,36 @@ export class AuthentificationService {
 
   ) {}
 
+
+  async loginn(username: string, password: string) {
+    this.logger.log(`Demande de connexion reçue pour le nom d'utilisateur: ${username}`);
+
+    let user = null;
+    let role = null;
+
+    user = await this.adminPlateformeRepository.findOne({ where: { nom: username, motdepasse: password }});
+    if (user) {
+        role = 'admin_platform';
+    } else {
+        user = await this.adminPointrelaisRepository.findOne({ where: { nom: username, motdepasse: password }});
+        if (user) {
+            role = 'admin_agent';
+        } else {
+            user = await this.agentpointrelaisRepository.findOne({ where: { nom: username, motdepasse: password }});
+            if (user) {
+                role = 'agent_point_relais';
+            } else {
+                this.logger.error(`Aucun utilisateur trouvé avec le nom d'utilisateur: ${username}`);
+                throw new NotFoundException('Nom d\'utilisateur ou mot de passe incorrect');
+            }
+        }
+    }
+
+    this.logger.log(`L'utilisateur s'est connecté avec succès avec le rôle : ${role}`);
+    return { success: true, role };
+}
+
+
   async login(username: string, password: string, role: string) {
     this.logger.log(`Demande de connexion reçue pour le nom d'utilisateur: ${username}, role: ${role}`);
 

@@ -43,8 +43,8 @@ export class AdminpointrelaisController {
   @Get('search/:q')
   findByQuery(@Query('q') query: string): Promise<AdminPointrelais[]> {
     return this.adminPointRelaisService.findByQuery(query);
+ 
   }
-
     
 }
 

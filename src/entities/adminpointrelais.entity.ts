@@ -19,6 +19,9 @@ export class AdminPointrelais {
 
   motdepasse: string; 
 
+  @Column({name: 'email', length:200, nullable: true})
+email: string | null;
+
   
 /*
   @OneToMany(() => Pointrelais, (pointrelais) => pointrelais.adminPointrelais)

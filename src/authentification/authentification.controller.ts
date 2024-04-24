@@ -1,4 +1,4 @@
-  import { Body, Controller, Get, Post } from '@nestjs/common';
+  import { Body, Controller, Get, Param, Post } from '@nestjs/common';
   import { AuthentificationService } from './authentification.service';
   import { AdminPlateforme } from 'src/entities/adminPlateforme.entity';
 import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
@@ -10,6 +10,16 @@ import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
     @Get()
     getHello(): string {
       return this.authentificationService.gethello();
+    }
+  
+     @Post('loginn/:username/:password')
+    async loginn(@Param('username') username: string, @Param('password') password: string) {
+        try {
+            const result = await this.authentificationService.loginn(username, password);
+            return result;
+        } catch (error) {
+            return { success: false, message: error.message };
+        }
     }
 
     @Post('login')

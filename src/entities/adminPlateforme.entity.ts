@@ -14,6 +14,9 @@ export class AdminPlateforme {
   @Column({ name: 'numerotelephone' })
   numerotelephone: number;
 
-  @Column({ name: 'motdepasse' })
+  @Column({ name: 'motdepasse',length:255 })
   motdepasse: string; 
+
+  @Column({name: 'email', length:200, nullable: true})
+  email: string | null;
 }

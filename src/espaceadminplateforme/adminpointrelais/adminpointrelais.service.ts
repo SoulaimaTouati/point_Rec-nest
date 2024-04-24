@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AdminPointrelais } from 'src/entities/adminpointrelais.entity';
 import { Pointrelais } from 'src/entities/pointrelais.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 
 @Injectable()
 export class AdminpointrelaisService {
@@ -31,10 +31,10 @@ export class AdminpointrelaisService {
     adminPointRelais.prenom = createAdminPointRelaisDto.prenom;
     adminPointRelais.numerotelephone = createAdminPointRelaisDto.numerotelephone;
     adminPointRelais.motdepasse = createAdminPointRelaisDto.motdepasse;
-    // Assigner d'autres propriétés au besoin
 
     return this.adminPointRelaisRepository.save(adminPointRelais);
   }
+
 
 
   async getAllPointRelais(): Promise<Pointrelais[]> {
@@ -75,10 +75,25 @@ export class AdminpointrelaisService {
 
     async findByQuery(query: string): Promise<AdminPointrelais[]> {
       return this.adminPointRelaisRepository.createQueryBuilder('admin')
-        .where('admin.nom LIKE :query OR admin.prenom LIKE :query', { query: `%${query}%` })
+        .where('admin.nom LIKE :query', { query: `%${query}%` })
         .getMany()  ;
         
         
     }
+
+    async FindByQuery(query: string): Promise<AdminPointrelais[]> {
+      const searchResults = await this.adminPointRelaisRepository.find({
+        where: [
+          { nom: Like (`query`) },
+        ],  
+      });
+  
+      if (!searchResults || searchResults.length === 0) {
+        throw new NotFoundException('Aucun résultat trouvé pour la recherche.');
+      }
+  
+      return searchResults;
+    }
   }
+
 
